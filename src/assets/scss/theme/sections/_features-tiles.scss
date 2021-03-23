@@ -1,5 +1,21 @@
-.features-tiles-item-image {
-	display: inline-flex;
-	border-radius: 50%;
-	background-color: get-color(primary, 3);
+.features-tiles {
+	.features-tiles-header {
+		padding: 60px 40px 20px 40px;
+	}
+	.features-tiles-item-image {
+		display: inline-flex;
+	}
+	.tiles-item-inner {
+		padding: 10px !important;
+	}
 }
+
+.bio-card {
+	background-color: get-color(light, 1);
+	filter: drop-shadow(5px 5px 2px get-color(light, 3));
+	.bio-info {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+

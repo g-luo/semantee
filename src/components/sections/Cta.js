@@ -27,7 +27,7 @@ const Cta = ({
 }) => {
 
   const outerClasses = classNames(
-    'cta section center-content-mobile reveal-from-bottom',
+    'cta section center-content-mobile',
     topOuterDivider && 'has-top-divider',
     bottomOuterDivider && 'has-bottom-divider',
     hasBgColor && 'has-bg-color',
@@ -40,7 +40,9 @@ const Cta = ({
     topDivider && 'has-top-divider',
     bottomDivider && 'has-bottom-divider',
     split && 'cta-split'
-  );  
+  );
+
+  invertColor = true;
 
   return (
     <section
@@ -51,10 +53,10 @@ const Cta = ({
         <div
           className={innerClasses}
         >
-          <div className="cta-slogan">
-            <h3 className="m-0">
-              For previewing layouts and visual?
-              </h3>
+          <div className="cta-slogan invert-color">
+            <h5 className="m-0">
+              Stay up to date with our latest releases.
+            </h5>
           </div>
           <div className="cta-action">
             <Input id="newsletter" type="email" label="Subscribe" labelHidden hasIcon="right" placeholder="Your best email">
