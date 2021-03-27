@@ -20,10 +20,9 @@ const AboutCard = ({
           <div className="features-tiles-item-header">
             <div className="features-tiles-item-image mb-16">
               <Image
+                className="bio-photo"
                 src={photo_object}
-                alt="founder photo"
-                width={180}
-                height={180} />
+                alt="founder photo" />
             </div>
           </div>
           <div className="features-tiles-item-content bio-info">
