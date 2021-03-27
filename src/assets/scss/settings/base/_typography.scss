@@ -1,12 +1,12 @@
 // Typography
 
 $font--provider:    'Google Fonts';
-$font--import:      'Open Sans:400,500,600,700,800';
+$font--import:      'DM Sans:400,500,600,700,800';
 
 // The font set
 $font--family: (
 	heading: 	null,
-	base:		'"Open Sans", sans-serif',
+	base:		'"DM Sans", sans-serif',
 	code: 		'Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace',
 	pre: 		'"Courier 10 Pitch", Courier, monospace'
 );

@@ -75,7 +75,8 @@ $icon--color: (
 
 // Misc elements: background color
 $bg--color: (
-	body: 			get-color(light, 2),
+	//body: 			get-color(light, 2),
+	body: linear-gradient(109.01deg, #0D6ED6 6.07%, #CD95FB 61.56%, #FCA67E 80.65%),
 	body-shadow:	0 20px 48px rgba(get-color(light, 2), .8),	// body shadow when a boxed layout is used (set to null if don't want a shadow)
 	body-outer:		lighten(get-color(light, 2), 2%),			// outer bg color when a boxed layout is used
 	bg-color: 		lighten(get-color(light, 2), 9%),			// .has-bg-color helper class

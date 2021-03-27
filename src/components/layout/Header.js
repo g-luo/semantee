@@ -71,7 +71,7 @@ const Header = ({
   const classes = classNames(
     'site-header',
     bottomOuterDivider && 'has-bottom-divider',
-    className
+    className,
   );
 
   return (
@@ -85,7 +85,6 @@ const Header = ({
             'site-header-inner',
             bottomDivider && 'has-bottom-divider'
           )}>
-          <Logo />
           {!hideNav &&
             <>
               <button

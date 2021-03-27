@@ -44,33 +44,37 @@ const FeaturesTiles = ({
   );
 
   const founders = [
+    
+    {
+      name: "Kourosh",
+      role: "Chief Executive Officer",
+      contact: "kourosh_hakhamaneshi@berkeley.edu",
+      linkedin: "https://www.linkedin.com/in/kourosh-hakhamaneshi-4816a58a/",
+      bio: "RL + Unsupervised Learning Research @ BAIR.",
+      photo: "kourosh.png"
+    },
+    { name: "Grace",
+      role: "Chief Product Officer",
+      contact: "graceluo@berkeley.edu",
+      linkedin: "https://www.linkedin.com/in/g-luo/",
+      bio: "Vision & Language Research @ BAIR. PM @ Berkeleytime.",
+      photo: "grace.png"
+    }, 
     { name: "Arman",
-      role: "COO",
+      role: "Chief Operating Officer",
       contact: "armank@berkeley.edu",
+      linkedin: "https://www.linkedin.com/in/arman-k/",
       bio: "Account Executive @ AWS.",
       photo: "arman.png"
     },
     {
       name: "Qutub Khan",
-      role: "--",
+      role: "Chief Tech Officer",
       contact: "qutubkhan.vajihi@berkeley.edu",
-      bio: "Applied Data Science & Machine Learning Data Scientist @ PayPal, Data Analyst @ Unilever.",
+      linkedin: "https://www.linkedin.com/in/qutubkhanvajihi/",
+      bio: "Data Scientist @ PayPal, Data Analyst @ Unilever.",
       photo: "qutub.png"
-    },
-    { name: "Grace",
-      role: "--",
-      contact: "graceluo@berkeley.edu",
-      bio: "Vision & Language Research @ BAIR. PM @ Berkeleytime.",
-      photo: "grace.png"
-    }, 
-    {
-      name: "Kourosh",
-      role: "--",
-      contact: "kourosh_hakhamaneshi@berkeley.edu",
-      bio: "RL + Unsupervised Learning Research @ BAIR.",
-      photo: "kourosh.png"
     }
-
   ]
 
   return (
@@ -87,7 +91,7 @@ const FeaturesTiles = ({
           </div>
           <div className={tilesClasses}>
             {founders.map((founder) => {
-              return <AboutCard name={founder.name} role={founder.role} contact={founder.contact} bio={founder.bio} photo={founder.photo}/>
+              return <AboutCard name={founder.name} role={founder.role} contact={founder.contact} linkedin={founder.linkedin} bio={founder.bio} photo={founder.photo}/>
             })}
           </div>
         </div>

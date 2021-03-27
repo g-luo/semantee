@@ -27,3 +27,7 @@
 .gradient-background-01 {
 	background: linear-gradient(109.01deg, #0D6ED6 6.07%, #CD95FB 61.56%, #FCA67E 80.65%);
 }
+
+.light-2-background {
+	background: get-color(light, 2);
+}

@@ -63,22 +63,12 @@ const Hero = ({
         <div className={innerClasses}>
           <div className="hero-content">
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
-              semantee.ai
+              semantee
             </h1>
             <div className="container-xs invert-color">
               <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
                 Natural language for databases.
               </p>
-              <div className="reveal-from-bottom" data-reveal-delay="600">
-                <ButtonGroup>
-                  <Button tag="a" color="primary" wideMobile href="https://cruip.com/">
-                    Get started
-                    </Button>
-                  <Button tag="a" color="dark" wideMobile href="https://github.com/cruip/open-react-template/">
-                    View on Github
-                    </Button>
-                </ButtonGroup>
-              </div>
             </div>
           </div>
         </div>
