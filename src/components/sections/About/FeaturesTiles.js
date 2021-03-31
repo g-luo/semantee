@@ -86,7 +86,7 @@ const FeaturesTiles = ({
         <div className={innerClasses}>
           <div className="features-tiles-header">
             <h4> Our Team </h4>
-            <p className="text-sm" > We are a team of UC Berkeley business students, data scientists, and researchers
+            <p> We are a team of UC Berkeley business students, data scientists, and researchers
             who are passionate about making data discovery and business report building as simple as chatting with a friend.</p>
           </div>
           <div className={tilesClasses}>

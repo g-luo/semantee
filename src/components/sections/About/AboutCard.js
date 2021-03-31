@@ -36,10 +36,10 @@ const AboutCard = ({
                   height={15} />
               </a>
             </h5>
-            <p className="m-0 text-xxs ta-l">
+            <p className="m-0 text-xs ta-l">
               <b>{role}</b>
             </p>
-            <p className="m-0 text-xxs ta-l">
+            <p className="m-0 text-xs ta-l">
               {bio}
             </p>
           </div>

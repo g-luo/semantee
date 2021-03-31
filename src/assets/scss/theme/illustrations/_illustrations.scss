@@ -15,15 +15,6 @@
 }
 
 // Hero illustration
-.illustration-section-01::after {
-	@include illustration('illustration-section-01.svg', 100%, 286px, top);
-}
-
-// Features illustration 02
-.illustration-section-02::after {
-	@include illustration('illustration-section-02.svg', 100%, 253px, null, null, 30px);
-}
-
 .gradient-background-01 {
 	background: linear-gradient(109.01deg, #0D6ED6 6.07%, #CD95FB 61.56%, #FCA67E 80.65%);
 }
