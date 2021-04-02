@@ -53,7 +53,7 @@
     border-radius: 50%;
 }
 .msg-bubble {
-    max-width: 450px;
+    max-width: 250px;
     padding: 0 0 0 10px;
     border-left: 3px solid get-color(primary, 1);
 }
@@ -74,8 +74,11 @@
     flex-direction: row-reverse;
 }
 .right-msg .msg-bubble {
-    color: #fff;
+    color: get-color(light, 1);
+    background: get-color(primary, 1);
+    border-radius: 3px;
     border: unset;
+    padding: 10px;
 }
 .right-msg .msg-img {
     margin: 0 0 0 10px;
