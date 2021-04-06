@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Image from '../elements/Image';
+import MsgTable from './MsgTable';
 
 const Msger = ({
 	isDisabled,
@@ -12,16 +13,18 @@ const Msger = ({
 	const [messageList, setMessages] = useState([
 		{
 			"is_semantee": true, 
-			"text": "Hi, welcome Semantee's SQL generator. Ask any question you want to get the correct query. 😄"
+			"text": "Hi, welcome Semantee's SQL generator. Ask any question you want to get the correct query. 😄",
+			"table": null
 		},
 	]);
 
-	const handleSetMessageList = (newMessage, isSemantee) => {
+	const handleSetMessageList = (newMessage, isSemantee, table) => {
 		setMessages(messageList =>
 			[
 				{
 					"is_semantee": isSemantee, 
-					"text": newMessage
+					"text": newMessage,
+					"table": table
 				}, 
 				...messageList, 
 			]
@@ -36,14 +39,14 @@ const Msger = ({
 	const sendMessage = (e) => {
 		// Prevent page reloads, which does a reset
 		e.preventDefault();
-		handleSetMessageList(message, false);
+		handleSetMessageList(message, false, null);
 		handleSetMessage("");
 		
 		axios.get("http://localhost:5000/get", {params: {msg: message}})
 		.then (
 		  (response) => {
-				console.log(response);
-				handleSetMessageList(response.data.sql_cmd, true);
+				console.log(response.data.sql_respond);
+				handleSetMessageList(response.data.sql_cmd, true, response.data.sql_respond);
 		  }
 		)
 		.catch(
@@ -85,6 +88,9 @@ const Msger = ({
 
 											<div className="msg-text">
 												{message.text}
+												{message.table &&
+													<MsgTable rows={message.table} />
+												}
 											</div>
 										</div>
 									</div>
@@ -102,6 +108,7 @@ const Msger = ({
 						value={message} 
 						onChange={(e) => handleSetMessage(e.target.value)} 
 						disabled={isDisabled}
+						autocomplete="off"
 					/>
 					<button type="submit" className="msger-send-btn" disabled={isDisabled}>
 						<b>Send</b>

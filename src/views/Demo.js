@@ -2,32 +2,9 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import Select from 'react-select';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import TableRow from '../components/demo/TableRow';
+import MetadataRow from '../components/demo/MetadataRow';
 import Msger from '../components/demo/Msger';
 import axios from 'axios';
-
-
-// {
-//   name: "Movies Table", 
-//   tables: [
-//     {
-//       name: "Actor",
-//       primary_key: "aid",
-//       schema: [
-//         {"key": "aid", "type": "int"},
-//         {"key" : "gender", "type": "text"},
-//       ]
-//     },
-//     {
-//       name: "Actress",
-//       primary_key: "aid",
-//       schema: [
-//         {"key": "aid", "type": "int"},
-//         {"key" : "gender", "type": "text"},
-//       ]
-//     }
-//   ]
-// }
 
 const outerClasses = classNames(
   'section demo',
@@ -37,8 +14,6 @@ const innerClasses = classNames(
   'section-inner',
   'has-bg-color',
 );
-
-
 
 const Demo = ({
   ...props
@@ -95,7 +70,7 @@ const Demo = ({
               <h5>{database.name}</h5>
               {
                 database.tables.map(table => {
-                  return <TableRow table={table} />
+                  return <MetadataRow table={table} />
                 })
               }
             </div>

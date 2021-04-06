@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Collapse } from 'react-bootstrap';
 
-const TableRow = ({
+const MetadataRow = ({
   table,
   ...props
 }) => {
@@ -35,7 +35,7 @@ const TableRow = ({
   )
 }
 
-export default TableRow;
+export default MetadataRow;
 
 
 
