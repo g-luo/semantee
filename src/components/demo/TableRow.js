@@ -21,7 +21,7 @@ const TableRow = ({
             table.schema.map(item => {
               return (
                 <div> 
-                  {item.key} 
+                  {item.name} 
                   <span className="table-schema-type">
                     {item.type}
                   </span>

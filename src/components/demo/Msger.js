@@ -3,6 +3,7 @@ import axios from 'axios';
 import Image from '../elements/Image';
 
 const Msger = ({
+	isDisabled,
 	...props
 }) => { 
 
@@ -41,7 +42,7 @@ const Msger = ({
 		.then (
 		  (response) => {
 				console.log(response);
-				handleSetMessageList(response.data, true);
+				handleSetMessageList(response.data.sql_cmd, true);
 		  }
 		)
 		.catch(
@@ -92,8 +93,16 @@ const Msger = ({
 				</main>
 
 				<form className="msger-inputarea" onSubmit={sendMessage}>
-					<input type="text" className="form-input msger-input" id="textInput" placeholder="Enter your message..." value={message} onChange={(e) => handleSetMessage(e.target.value)} />
-					<button type="submit" className="msger-send-btn">
+					<input 
+						type="text" 
+						className="form-input msger-input" 
+						id="textInput" 
+						placeholder="Enter your message..." 
+						value={message} 
+						onChange={(e) => handleSetMessage(e.target.value)} 
+						disabled={isDisabled}
+					/>
+					<button type="submit" className="msger-send-btn" disabled={isDisabled}>
 						<b>Send</b>
 					 </button>
 				</form>
