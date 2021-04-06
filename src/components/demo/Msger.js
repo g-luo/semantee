@@ -14,17 +14,19 @@ const Msger = ({
 		{
 			"is_semantee": true, 
 			"text": "Hi, welcome Semantee's SQL generator. Ask any question you want to get the correct query. 😄",
-			"table": null
+			"table": null,
+			"info": null,
 		},
 	]);
 
-	const handleSetMessageList = (newMessage, isSemantee, table) => {
+	const handleSetMessageList = (newMessage, isSemantee, table, info) => {
 		setMessages(messageList =>
 			[
 				{
 					"is_semantee": isSemantee, 
 					"text": newMessage,
-					"table": table
+					"table": table, 
+					"info": info
 				}, 
 				...messageList, 
 			]
@@ -39,19 +41,19 @@ const Msger = ({
 	const sendMessage = (e) => {
 		// Prevent page reloads, which does a reset
 		e.preventDefault();
-		handleSetMessageList(message, false, null);
+		handleSetMessageList(message, false, null, null);
 		handleSetMessage("");
 		
 		axios.get("http://localhost:5000/get", {params: {msg: message}})
 		.then (
 		  (response) => {
-				console.log(response.data.sql_respond);
-				handleSetMessageList(response.data.sql_cmd, true, response.data.sql_respond);
+				console.log(response.data);
+				handleSetMessageList(response.data.sql_cmd, true, response.data.sql_respond, JSON.stringify(response.data.info));
 		  }
 		)
 		.catch(
 			(error) => {
-				handleSetMessageList("Semantee threw an error. Try again.", true)
+				handleSetMessageList("Semantee threw an error. Try again.", true, null, null)
 			}
 		);
 	}
@@ -87,7 +89,8 @@ const Msger = ({
 											</div>
 
 											<div className="msg-text">
-												{message.text}
+												{message.text} <br/>
+												{message.info && <span>Additional Info: {message.info}</span>}
 												{message.table &&
 													<MsgTable rows={message.table} />
 												}
