@@ -13,6 +13,7 @@
     justify-content: space-between;
     width: 100%;
     box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+    background-color: get-color(light, 2);
 }
 
 .msger-header {
@@ -33,8 +34,12 @@
 
 .msger-chat {
     flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
     overflow-y: auto;
-    padding: 10px;
+    margin: 30px 10px 10px 10px;
+    max-height: 50vh;
+    overflow: scroll;
 }
 
 .msg {
@@ -109,8 +114,4 @@
 .msger-send-btn:disabled {
     color: get-color(dark, 1);
     cursor: not-allowed;
-}
-
-.msger-chat {
-    background-color: get-color(light, 2);
 }

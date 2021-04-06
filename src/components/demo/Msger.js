@@ -18,11 +18,12 @@ const Msger = ({
 
 	const handleSetMessageList = (newMessage, isSemantee) => {
 		setMessages(messageList =>
-			[...messageList, 
+			[
 				{
 					"is_semantee": isSemantee, 
 					"text": newMessage
-				}
+				}, 
+				...messageList, 
 			]
 		);
 	} 

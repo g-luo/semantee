@@ -7,7 +7,6 @@ const TableRow = ({
 }) => {
   const [open, setOpen] = useState(false);
 
-  console.log(table)
   return (
     <div className="table-row">
       <div className="table-name" onClick={() => setOpen(!open)}>
