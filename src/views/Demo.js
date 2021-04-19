@@ -41,7 +41,7 @@ const Demo = ({
   const options = [{value: defaultValue, label: defaultValue}]
 
   const get_db_info = () => {
-    axios.get("http://localhost:5000/get_db_info")
+    axios.get("http://semantee.herokuapp.com/get_db_info")
     .then (
       (response) => {
         setDatabase(response.data);

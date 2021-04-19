@@ -8,8 +8,8 @@ const Msger = ({
 	...props
 }) => { 
 
-	const seamanateeProfile = require('./../../assets/images/seamanatee.jpeg');
-	const userProfile = require('./../../assets/images/seamanatee.jpeg');
+	const seamanateeProfile = require('./../../assets/images/seamanatee.png');
+	const userProfile = require('./../../assets/images/user.png');
 	const [messageList, setMessages] = useState([
 		{
 			"is_semantee": true, 
@@ -44,7 +44,8 @@ const Msger = ({
 		handleSetMessageList(message, false, null, null);
 		handleSetMessage("");
 		
-		axios.get("http://localhost:5000/get", {params: {msg: message}})
+		// http://localhost:5000/get
+		axios.get("http://semantee.herokuapp.com/get", {params: {msg: message}})
 		.then (
 		  (response) => {
 				console.log(response.data);
