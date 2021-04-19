@@ -3,7 +3,6 @@ import React from 'react';
 import Hero from '../components/sections/Hero';
 import Cta from '../components/sections/Cta';
 import FeaturesTiles from '../components/sections/About/FeaturesTiles';
-import Demo from '../components/demo/Demo';
 
 const Home = () => {
 

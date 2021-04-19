@@ -1,0 +1,45 @@
+import React, { useState } from 'react';
+import { Collapse } from 'react-bootstrap';
+
+const MetadataRow = ({
+  table,
+  ...props
+}) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="table-row">
+      <div className="table-name" onClick={() => setOpen(!open)}>
+        <b>{table.name}</b>
+        <span> {open ? '-' : '+'} </span>
+      </div>
+      <div className="table-schema">
+        <Collapse in={open}>
+        <div>
+          {
+            table.schema.map(item => {
+              return (
+                <div> 
+                  {item.name} 
+                  <span className="table-schema-type">
+                    {item.type}
+                  </span>
+                </div>
+              )
+            })
+          }
+        </div>
+        </Collapse>
+      </div>
+    </div>
+  )
+}
+
+export default MetadataRow;
+
+
+
+  
+
+
+

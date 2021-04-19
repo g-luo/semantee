@@ -1,0 +1,39 @@
+.demo {
+  .demo-table {
+    margin: 10px 0 20px 0;
+    padding: 20px;
+    max-height: 40vh;
+    overflow: scroll;
+
+    h5 {
+      margin: 0 0 10px 0;
+    }
+  }
+  .demo-btn {
+    background-color: get-color(primary, 1);
+    margin: 10px 0 10px 0;
+    width: 100%;
+  }
+}
+
+.table-row {
+  @include font-size(sm);
+  
+  .table-name {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid get-color(light, 1);
+    line-height: 30px;
+    span {
+      color: get-color(primary, 1);
+      font-weight: 700;
+    }
+  }
+  .table-schema {
+    padding-top: 10px;
+    .table-schema-type {
+      color: get-color(primary, 4);
+      margin-left: 10px;
+    }
+  }
+}
