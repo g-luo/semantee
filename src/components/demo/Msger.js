@@ -45,7 +45,7 @@ const Msger = ({
 		handleSetMessage("");
 		
 		// http://localhost:5000/get
-		axios.get("http://semantee.herokuapp.com/get", {params: {msg: message}})
+		axios.get("https://semantee.herokuapp.com/get", {params: {msg: message}})
 		.then (
 		  (response) => {
 				console.log(response.data);
