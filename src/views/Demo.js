@@ -30,13 +30,8 @@ const Demo = ({
       ]
     }
   )
-  // const options = databases.map(database => (
-  //     {
-  //       value: database.name,
-  //       label: database.name
-  //     }
-  //   )
-  // )
+
+  const [initInfo, setInitInfo] = useState({"options": null})
   const defaultValue = "Flight Company"
   const options = [{value: defaultValue, label: defaultValue}]
 
@@ -54,7 +49,30 @@ const Demo = ({
       }
     );
   }
+
+  const get_init_info = () => {
+    axios.get("https://semantee.herokuapp.com/get_init_info")
+    .then (
+      (response) => {
+        setInitInfo(response.data);
+      }
+    )
+    .catch(
+      (error) => {
+        console.log("Error retrieving initial info");
+      }
+    );
+  }
+
+  const get_info = () => {
+    get_init_info()
+    get_db_info()
+  }
+
   const [msgerDisabled, setMsgerDisabled] = useState(true);
+
+  // Reload the database every time the page is reloaded
+  axios.get("https://semantee.herokuapp.com/reset")
 
   return (
     <section
@@ -65,7 +83,7 @@ const Demo = ({
         <Row>
           <Col md={4}>
             <Select options={options} defaultValue={options[0]} />
-            <Button className="demo-btn" onClick={() => get_db_info()}> Load Database </Button>
+            <Button className="demo-btn" onClick={() => get_info()}> Load Database </Button>
             <div className="demo-table light-2-background">
               <h5>{database.name}</h5>
               {
@@ -76,7 +94,7 @@ const Demo = ({
             </div>
           </Col>
           <Col md={8}>
-            <Msger isDisabled={msgerDisabled}/>
+            <Msger isDisabled={msgerDisabled} initInfo={initInfo}/>
           </Col>
          </Row>
       </Container>

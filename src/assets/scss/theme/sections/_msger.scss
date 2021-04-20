@@ -25,7 +25,7 @@
     border-radius: 5px 5px 0 0;
     h5 {
         background: -webkit-linear-gradient(left, #0D6ED6, #CD95FB);
-        max-width: 150px;
+        max-width: 250px;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin: unset;
@@ -50,6 +50,17 @@
 .msg-table {
     max-height: 200px;
     overflow: scroll;
+}
+
+.msg-button {
+    width: 100%;
+    background: get-color(light, 2);
+    color: get-color(dark, 1);
+}
+.msg-button:hover {
+    color: get-color(light, 3);
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .msg-img {

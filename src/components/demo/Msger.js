@@ -1,60 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Image from '../elements/Image';
 import MsgTable from './MsgTable';
+import { Button } from 'react-bootstrap';
 
 const Msger = ({
 	isDisabled,
+	initInfo,
 	...props
-}) => { 
-
+}) => {
 	const seamanateeProfile = require('./../../assets/images/seamanatee.png');
 	const userProfile = require('./../../assets/images/user.png');
+
+	// useEffect is required to update based on props
+	useEffect(() => {
+		if (initInfo.options) {
+			handleSetMessageList("Select a query", false, null, null, initInfo.options)
+	  	}
+	}, [initInfo.options])
+
 	const [messageList, setMessages] = useState([
 		{
 			"is_semantee": true, 
-			"text": "Hi, welcome Semantee's SQL generator. Ask any question you want to get the correct query. 😄",
+			"text": "Hi, welcome Semantee's scripted SQL generator. Select a query to get started. 😄",
 			"table": null,
 			"info": null,
+			"options": null
 		},
 	]);
 
-	const handleSetMessageList = (newMessage, isSemantee, table, info) => {
+	const handleSetMessageList = (newMessage, isSemantee, table, info, newOptions) => {
 		setMessages(messageList =>
 			[
 				{
 					"is_semantee": isSemantee, 
 					"text": newMessage,
 					"table": table, 
-					"info": info
+					"info": info,
+					"options": newOptions,
 				}, 
 				...messageList, 
 			]
 		);
 	} 
 
-	const [message, setMessage] = useState("");
-	const handleSetMessage = (newMessage) => {
-		setMessage(message => newMessage);
-	}
-
-	const sendMessage = (e) => {
-		// Prevent page reloads, which does a reset
-		e.preventDefault();
-		handleSetMessageList(message, false, null, null);
-		handleSetMessage("");
-		
-		// http://localhost:5000/get
+	const sendMessage = (message) => {
 		axios.get("https://semantee.herokuapp.com/get", {params: {msg: message}})
 		.then (
 		  (response) => {
-				console.log(response.data);
-				handleSetMessageList(response.data.sql_cmd, true, response.data.sql_respond, JSON.stringify(response.data.info));
+		  		// JSON.stringify(response.data.info)
+				handleSetMessageList(response.data.sql_cmd, true, response.data.sql_respond, null, null);
+				prompt = response.data.info.options.size > 0 ? "Select a query": "Semantee has nothing left to say. Reload to try again."	
+				handleSetMessageList(prompt, false, null, null, response.data.info.options);
 		  }
 		)
 		.catch(
 			(error) => {
-				handleSetMessageList("Semantee threw an error. Try again.", true, null, null)
+				handleSetMessageList("Semantee threw an error. Try again.", true, null, null, null)
 			}
 		);
 	}
@@ -64,7 +66,7 @@ const Msger = ({
 			<section className="msger">
 				<header className="msger-header">
 					<div className="msger-header-title">
-						<h5> <div className="circle"></div> Semantee SQLGen </h5>
+						<h5> <div className="circle"></div> Semantee Scripted SQLGen </h5>
 					</div>
 				</header>
 
@@ -95,6 +97,11 @@ const Msger = ({
 												{message.table &&
 													<MsgTable rows={message.table} />
 												}
+												{!message.is_semantee && message.options &&
+													Object.keys(message.options).map((i) => {
+														return <Button className="msg-button" onClick={() => sendMessage(message.options[i].input)}>{message.options[i].input}</Button>
+													})
+												}
 											</div>
 										</div>
 									</div>
@@ -102,22 +109,6 @@ const Msger = ({
 						)})
 					}
 				</main>
-
-				<form className="msger-inputarea" onSubmit={sendMessage}>
-					<input 
-						type="text" 
-						className="form-input msger-input" 
-						id="textInput" 
-						placeholder="Enter your message..." 
-						value={message} 
-						onChange={(e) => handleSetMessage(e.target.value)} 
-						disabled={isDisabled}
-						autocomplete="off"
-					/>
-					<button type="submit" className="msger-send-btn" disabled={isDisabled}>
-						<b>Send</b>
-					 </button>
-				</form>
 			</section>
 		</div>
 	)
