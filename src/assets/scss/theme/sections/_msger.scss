@@ -8,12 +8,14 @@
 }*/
 
 .msger {
-    display: flex;
-    flex-flow: column wrap;
+    // display: flex;
+    // flex-flow: column wrap;
+    overflow: scroll;
     justify-content: space-between;
     width: 100%;
     box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
     background-color: get-color(light, 2);
+    height: 70vh;
 }
 
 .msger-header {
@@ -37,8 +39,8 @@
     display: flex;
     flex-direction: column-reverse;
     overflow-y: auto;
-    margin: 30px 10px 10px 10px;
-    max-height: 80vh;
+    margin: 20px;
+    // max-height: 80vh;
     overflow: scroll;
 }
 
@@ -58,9 +60,14 @@
     color: get-color(dark, 1);
 }
 .msg-button:hover {
-    color: get-color(light, 3);
+    color: get-color(light, 1);
     cursor: pointer;
     font-weight: bold;
+}
+.msg-button:disabled{
+    background: get-color(dark, 1);
+    color: get-color(light, 1);
+    cursor: not-allowed;
 }
 
 .msg-img {
@@ -89,6 +96,11 @@
 }
 .msg-info-time {
     font-size: 0.85em;
+}
+
+.first-msg {
+    margin-top: 20px;
+    margin-bottom: auto;
 }
 
 .right-msg {

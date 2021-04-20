@@ -1,4 +1,23 @@
 .demo {
+  button {
+    border-color: unset;
+    &:hover {
+      border-color: unset;
+      filter: brightness(85%);
+    }
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+  .section-inner {
+    height: 85vh;
+    width: 100vw;
+    padding: 40px;
+    // Janky since I couldn't get the command "tablet" to parse
+    @include media("<=768px") {
+      height: 120vh;
+    }
+  }
   .demo-table {
     margin: 10px 0 20px 0;
     padding: 20px;
@@ -11,6 +30,11 @@
   }
   .demo-btn {
     background-color: get-color(primary, 1);
+    margin: 10px 0 10px 0;
+    width: 100%;
+  }
+  .demo-btn-reset {
+    background-color: get-color(primary, 5);
     margin: 10px 0 10px 0;
     width: 100%;
   }

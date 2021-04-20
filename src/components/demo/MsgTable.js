@@ -5,7 +5,6 @@ const MsgTable = ({
   rows,
   ...props
 }) => {
-  console.log(rows)
   return (
     <div className="msg-table">
       <Table striped bordered hover>

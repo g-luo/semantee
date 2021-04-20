@@ -63,7 +63,7 @@ const Hero = ({
         <div className={innerClasses}>
           <div className="hero-content">
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
-              semantee
+              <i>Semantee</i>
             </h1>
             <div className="container-xs invert-color">
               <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">

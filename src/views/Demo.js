@@ -64,7 +64,9 @@ const Demo = ({
     );
   }
 
-  const get_info = () => {
+  const get_info = (e) => {
+    // Set disabled to true so they can't press multiple times
+    e.target.disabled = true
     get_init_info()
     get_db_info()
   }
@@ -72,18 +74,25 @@ const Demo = ({
   const [msgerDisabled, setMsgerDisabled] = useState(true);
 
   // Reload the database every time the page is reloaded
-  axios.get("https://semantee.herokuapp.com/reset")
+  axios.get("https://semantee.herokuapp.com/reset").then().catch((error) => {})
 
   return (
     <section
       {...props}
       className={outerClasses}
     >
-      <Container className={innerClasses}>
+      <div className={innerClasses}>
         <Row>
           <Col md={4}>
             <Select options={options} defaultValue={options[0]} />
-            <Button className="demo-btn" onClick={() => get_info()}> Load Database </Button>
+            <Row>
+              <Col md={6}>
+                <Button className="demo-btn" onClick={(e) => get_info(e)}> Load Database </Button>
+              </Col>
+              <Col md={6}>
+                <Button className="demo-btn-reset" onClick={() => window.location.reload()}> Reset Database</Button>
+              </Col>
+            </Row>
             <div className="demo-table light-2-background">
               <h5>{database.name}</h5>
               {
@@ -97,7 +106,7 @@ const Demo = ({
             <Msger isDisabled={msgerDisabled} initInfo={initInfo}/>
           </Col>
          </Row>
-      </Container>
+      </div>
     </section>
   )
 }
